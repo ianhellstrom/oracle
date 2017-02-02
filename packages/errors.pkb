@@ -5,10 +5,7 @@
  *                Checking Data Type Consistency in Oracle
  *                ETL: A Simple Package to Load Data from Views
  * Compatibility: Oracle Database 10g Release 1 and above
- * Base URL:      http://databaseline.wordpress.com
- * Post URL:      http://wp.me/p4zRKC-2U
- *                http://wp.me/p4zRKC-42
- *                http://wp.me/p4zRKC-6F
+ * Base URL:      https://databaseline.bitbucket.io
  * Author:        Ian Hellström
  *
  * Notes:         DBMS_UTILITY.FORMAT_ERROR_BACKTRACE is available from 10.1
@@ -82,17 +79,17 @@ AS
                  l_ip_address,
                  l_auth_method );
 
-      COMMIT;   
+      COMMIT;
     ELSE
       SYS.DBMS_OUTPUT.PUT_LINE(l_call_stack);
       SYS.DBMS_OUTPUT.PUT_LINE(l_error_stack);
       SYS.DBMS_OUTPUT.PUT_LINE(l_error_trace);
     END IF;
-   
+
   END log_and_continue;
 
 
-  /** Logs or displays errors based on the environment variable of this package's specification, 
+  /** Logs or displays errors based on the environment variable of this package's specification,
    * and raises the exception.
    * @param  code_in  exception number (SQLCODE)
    * @param  desc_in  custom exception description

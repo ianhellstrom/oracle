@@ -3,8 +3,7 @@
  *
  * Code for post: N/A
  * Compatibility: Oracle Database 11g Release 1
- * Base URL:      http://databaseline.wordpress.com
- * Post URL:      N/A
+ * Base URL:      https://databaseline.bitbucket.io
  * Author:        Ian Hellström
  *
  * Notes:         PIVOT is available from 11.1
@@ -228,7 +227,7 @@ AS
                                                  , 'User Rollback Undo Records Applied Per Txn' AS usr_rbck_undo_recs_per_txn
                                                  , 'User Rollbacks Percentage' AS usr_rbck_pct
                                                  , 'User Transaction Per Sec' AS usr_txn_per_sec));
-                                                 
+
 COMMENT ON TABLE adm_sysmetrics
 IS
   'This view shows the last 365 days of system metrics from DBA_HIST_SYSMETRIC_SUMMARY. It pivots the data, so that each metric has its own column to enable statistical analyses to identify potential issues with the database. Most of the details contained in the column comments have been shamelessly copied from the Oracle Concepts Guide, the Oracle DBA page by Burleson Consulting, and Tom Kyte''s excellent blog entries. For metrics that have a value per second (and per user call) and per transaction, we only take the value per transaction, as we can reconstruct the value per second with the number of transactions per second anyway.'
@@ -342,7 +341,7 @@ IS
   'The total I/O throughput of the database for both reads and writes in megabytes per second. A very high value indicates that the database is generating a significant volume of I/O data.';
   COMMENT ON column adm_sysmetrics.IO_REQS_PER_SEC
 IS
-  'The total number of I/O requests of the database for both reads and writes in megabytes per second.';  
+  'The total number of I/O requests of the database for both reads and writes in megabytes per second.';
   COMMENT ON column adm_sysmetrics.LEAF_NODE_SPLITS_PER_TXN
 IS
   'The number of times per transaction an index leaf node was split because of the insertion of an additional value. It is an important measure of the DML activity on an index and excessive DML can leave an index in a sub-optimal structure, necessitating a rebuild for optimal index performance.'
@@ -490,4 +489,4 @@ IS
   'The number of undo records applied to user-requested rollback changes per transaction.';
   COMMENT ON column adm_sysmetrics.USR_TXN_PER_SEC
 IS
-  'The number of user transactions per second.';                                        
+  'The number of user transactions per second.';

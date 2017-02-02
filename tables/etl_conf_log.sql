@@ -3,8 +3,7 @@
  *
  * Code for post: ETL: A Simple Package to Load Data from Views
  * Compatibility: Oracle Database 10g Release 1 and above
- * Base URL:      http://databaseline.wordpress.com
- * Post URL:      http://wp.me/p4zRKC-6F
+ * Base URL:      https://databaseline.bitbucket.io
  * Author:        Ian Hellström
  *
  * Notes:         DBMS_UTILITY.FORMAT_ERROR_BACKTRACE is available from 10.1 (in ERRORS)
@@ -20,7 +19,7 @@
   , modified_through  VARCHAR2(100 BYTE)
   , modification_type VARCHAR2(10 BYTE)
   , modifications     VARCHAR2(4000 BYTE)
-  , CONSTRAINT etl_conf_log_pk 
+  , CONSTRAINT etl_conf_log_pk
       PRIMARY KEY (target_own, target_obj, modified_on, modified_by, modified_through, modification_type)
   , CONSTRAINT etl_conf_log_type_ck
       CHECK ( modification_type IN ('INSERT','UPDATE','DELETE') )

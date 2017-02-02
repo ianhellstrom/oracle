@@ -4,9 +4,7 @@
  * Code for post: Searching The Oracle Data Dictionary
  *                Checking Data Type Consistency in Oracle
  * Compatibility: Oracle Database 8i Release 1
- * Base URL:      http://databaseline.wordpress.com
- * Post URL:      http://wp.me/p4zRKC-2U
- *                http://wp.me/p4zRKC-42
+ * Base URL:      https://databaseline.bitbucket.io
  * Author:        Ian Hellström
  *
  * Notes:         Extended data types (e.g. VARCHAR2) are available from 12.1
@@ -17,19 +15,19 @@ CREATE OR REPLACE PACKAGE type_defs
 AUTHID CURRENT_USER
 AS
   PRAGMA SERIALLY_REUSABLE;
-  
+
   SUBTYPE spec_t   IS VARCHAR(100 CHAR);
 
-  -- Note: as of 12c extended data types are available, which means that text_t and string_t can be the same. For compatibility reasons, 
+  -- Note: as of 12c extended data types are available, which means that text_t and string_t can be the same. For compatibility reasons,
   -- they are split inside this package.
   SUBTYPE text_t   IS VARCHAR2(4000 BYTE);
   SUBTYPE string_t IS VARCHAR2(32767 BYTE);
 
-  -- Note: dba_objects is not available at the package level, as it yields "PLS-00201: identifier 'DBA_OBJECTS' must be declared". 
+  -- Note: dba_objects is not available at the package level, as it yields "PLS-00201: identifier 'DBA_OBJECTS' must be declared".
   -- The columns of all_objects and dba_objects are, however, the same.
   SUBTYPE identifier_t   IS all_objects.object_name%TYPE;
   TYPE    identifier_aat IS TABLE OF identifier_t INDEX BY PLS_INTEGER;
-  
+
   SUBTYPE type_t IS all_types.type_name%TYPE;
 
 END type_defs;

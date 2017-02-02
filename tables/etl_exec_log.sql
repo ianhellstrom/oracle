@@ -3,8 +3,7 @@
  *
  * Code for post: ETL: A Simple Package to Load Data from Views
  * Compatibility: Oracle Database 10g Release 1 and above
- * Base URL:      http://databaseline.wordpress.com
- * Post URL:      http://wp.me/p4zRKC-6F
+ * Base URL:      https://databaseline.bitbucket.io
  * Author:        Ian Hellström
  *
  * Notes:         DBMS_UTILITY.FORMAT_ERROR_BACKTRACE is available from 10.1 (in ERRORS)
@@ -20,13 +19,13 @@ CREATE
   , num_deleted  NUMBER(10,0) NOT NULL
   , is_success   CHAR(1 byte) NOT NULL
   , elapsed_time INTERVAL DAY (2) TO SECOND (6)
-  , CONSTRAINT etl_exec_log_succ_ck 
+  , CONSTRAINT etl_exec_log_succ_ck
       CHECK ( is_success IN ('Y','N') )
-  , CONSTRAINT etl_exec_log_ins_ck 
+  , CONSTRAINT etl_exec_log_ins_ck
       CHECK (num_inserted >= 0)
-  , CONSTRAINT etl_exec_log_del_ck 
+  , CONSTRAINT etl_exec_log_del_ck
       CHECK (num_deleted  >= 0)
-  , CONSTRAINT etl_exec_log_pk 
+  , CONSTRAINT etl_exec_log_pk
       PRIMARY KEY (load_inst, load_owner, load_object)
   );
 

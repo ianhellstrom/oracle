@@ -5,10 +5,7 @@
  *                Checking Data Type Consistency in Oracle
  *                ETL: A Simple Package to Load Data from Views
  * Compatibility: Oracle Database 10g Release 1 and above
- * Base URL:      http://databaseline.wordpress.com
- * Post URL:      http://wp.me/p4zRKC-2U
- *                http://wp.me/p4zRKC-42
- *                http://wp.me/p4zRKC-6F
+ * Base URL:      https://databaseline.bitbucket.io
  * Author:        Ian Hellström
  *
  * Notes:         DBMS_UTILITY.FORMAT_ERROR_BACKTRACE is available from 10.1
@@ -45,15 +42,15 @@ AS
 
   -- Oracle exceptions numbers with names.
   en_invalid_sql_name CONSTANT INTEGER := -44003;
-  PRAGMA EXCEPTION_INIT( ex_invalid_sql_name, -44003 );  
-   
+  PRAGMA EXCEPTION_INIT( ex_invalid_sql_name, -44003 );
+
   -- Custom exceptions numbers (between -20999 and -20005) with names.
   en_empty_string_specified CONSTANT INTEGER := -20999;
   PRAGMA EXCEPTION_INIT( ex_empty_string_specified, -20999 );
 
   en_double_quotes_do_not_match CONSTANT INTEGER := -20998;
   PRAGMA EXCEPTION_INIT( ex_double_quotes_do_not_match, -20998 );
-  
+
   en_invalid_identifier CONSTANT INTEGER := -20997;
   PRAGMA EXCEPTION_INIT( ex_invalid_identifier, -20997 );
 
@@ -71,10 +68,10 @@ AS
 
   en_redef_copy_dependents CONSTANT INTEGER := -20992;
   PRAGMA EXCEPTION_INIT( ex_redef_copy_dependents, -20992 );
-  
+
   en_table_unredefinable CONSTANT INTEGER := -20991;
   PRAGMA EXCEPTION_INIT( ex_table_unredefinable, -20991);
-  
+
   en_invalid_value CONSTANT INTEGER := -20990;
   PRAGMA EXCEPTION_INIT( ex_invalid_value, -20990);
 
@@ -94,15 +91,15 @@ AS
   PRAGMA EXCEPTION_INIT( ex_unrecompilable, -20985);
 
   PROCEDURE log_and_stop
-  ( 
+  (
     code_in INTEGER  := SQLCODE
-  , desc_in VARCHAR2 := NULL 
+  , desc_in VARCHAR2 := NULL
   );
 
   PROCEDURE log_and_continue
-  ( 
+  (
     code_in INTEGER  := SQLCODE
-  , desc_in VARCHAR2 := NULL 
+  , desc_in VARCHAR2 := NULL
   );
-  
+
 END errors;

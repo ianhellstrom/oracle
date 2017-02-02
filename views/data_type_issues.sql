@@ -4,8 +4,7 @@
  * Code for post: Checking Data Type Consistency in Oracle
  * Compatibility: Oracle Database 12c Release 1 and above
  *                Oracle Database 10g Release 1 and above (with minor modifications)
- * Base URL:      http://databaseline.wordpress.com
- * Post URL:      http://wp.me/p4zRKC-42
+ * Base URL:      https://databaseline.bitbucket.io
  * Author:        Ian Hellström
  *
  * Notes:         Regular expressions are available from 10.1
@@ -25,32 +24,32 @@ WITH
     , atc.data_precision
     , atc.data_scale
     , atc.char_used
-    , sql_utils.to_type_spec( atc.data_type, atc.data_length, 
+    , sql_utils.to_type_spec( atc.data_type, atc.data_length,
                               atc.data_precision, atc.data_scale, atc.char_used )                         AS full_data_type
-    , COUNT(DISTINCT atc.table_name) 
-        OVER ( PARTITION BY atc.column_name, 
-                            sql_utils.to_type_spec( atc.data_type, atc.data_length, 
+    , COUNT(DISTINCT atc.table_name)
+        OVER ( PARTITION BY atc.column_name,
+                            sql_utils.to_type_spec( atc.data_type, atc.data_length,
                                                     atc.data_precision, atc.data_scale, atc.char_used ) ) AS num_tabs
-    , COUNT(DISTINCT sql_utils.to_type_spec( atc.data_type, atc.data_length, 
-                                             atc.data_precision, atc.data_scale, atc.char_used )) 
+    , COUNT(DISTINCT sql_utils.to_type_spec( atc.data_type, atc.data_length,
+                                             atc.data_precision, atc.data_scale, atc.char_used ))
         OVER (PARTITION BY atc.column_name)                                                               AS num_types
     FROM
       all_tab_cols atc
     INNER JOIN
       all_objects ao
-    ON 
+    ON
       atc.owner = ao.owner
     AND atc.table_name = ao.object_name
-    WHERE 
+    WHERE
       NOT REGEXP_LIKE(atc.owner,sql_utils.default_schemas_regex())
       AND object_type LIKE 'TABLE%'
   )
 , filtered_tab_cols AS
   (
     SELECT
-      MIN(tc.owner) 
+      MIN(tc.owner)
         KEEP (DENSE_RANK FIRST ORDER BY tc.num_tabs DESC, tc.owner, tc.table_name) AS owner
-    , MIN(tc.table_name) 
+    , MIN(tc.table_name)
         KEEP (DENSE_RANK FIRST ORDER BY tc.num_tabs DESC, tc.owner, tc.table_name) AS table_name
     , tc.column_name
     , tc.data_type
@@ -101,14 +100,14 @@ FROM
 INNER JOIN filtered_tab_cols aftc
 ON
   ftc.column_name = aftc.column_name
-AND 
-  ( 
+AND
+  (
     ftc.num_tabs > aftc.num_tabs
-    OR 
-    ( 
+    OR
+    (
       ftc.num_tabs = aftc.num_tabs
       AND ftc.table_name < aftc.table_name
-    ) 
+    )
   );
 
 COMMENT ON TABLE data_type_issues IS 'Holds all potential data type mismatches with occurrences.'

@@ -2,22 +2,22 @@
  * Execute this deployment script from the current directory
  * in which the source files are located.
  *
- * These files can also be placed in the SQLPATH folder, 
- * which can be found by issuing: 
+ * These files can also be placed in the SQLPATH folder,
+ * which can be found by issuing:
  *   - "echo $SQLPATH" on UNIX/Linux
  *   - "echo %SQLPATH%" on Windows.
- * A list of all environment variables for Linux (Windows) 
+ * A list of all environment variables for Linux (Windows)
  * can be obtained by the command "printenv" ("set").
  *
- * To find the present working directory, use "host pwd" 
+ * To find the present working directory, use "host pwd"
  * in SQL*Plus.
- * Note that "host cd" in SQL*Plus creates a subshell, 
+ * Note that "host cd" in SQL*Plus creates a subshell,
  * which does not affect SQL*Plus itself.
  *
- * Running a script in SQL*Plus is as easy as typing 
+ * Running a script in SQL*Plus is as easy as typing
  * START deployment.pls (when moved to the root folder).
  */
- 
+
 @"tables/error_log.sql"
 /
 @"views/error_log_recent.sql"

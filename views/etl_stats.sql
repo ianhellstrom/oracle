@@ -3,8 +3,7 @@
  *
  * Code for post: ETL: A Simple Package to Load Data from Views
  * Compatibility: Oracle Database 10g Release 1 and above
- * Base URL:      http://databaseline.wordpress.com
- * Post URL:      http://wp.me/p4zRKC-6F
+ * Base URL:      https://databaseline.bitbucket.io
  * Author:        Ian Hellström
  *
  * Notes:         DBMS_UTILITY.FORMAT_ERROR_BACKTRACE is available from 10.1 (in ERRORS)
@@ -36,7 +35,7 @@ WITH stats AS
   , load_object
   , is_success
 )
-SELECT 
+SELECT
   load_owner
 , load_object
 , is_success
@@ -59,7 +58,7 @@ SELECT
     NULL
   END AS pred_exec_time_sec
 , avg_rows_per_sec
-FROM 
+FROM
   stats
 ;
 

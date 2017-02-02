@@ -3,8 +3,7 @@
  *
  * Code for post: ETL: A Simple Package to Load Data from Views
  * Compatibility: Oracle Database 10g Release 1 and above
- * Base URL:      http://databaseline.wordpress.com
- * Post URL:      http://wp.me/p4zRKC-6F
+ * Base URL:      https://databaseline.bitbucket.io
  * Author:        Ian Hellström
  *
  * Notes:         DBMS_UTILITY.FORMAT_ERROR_BACKTRACE is available from 10.1 (in ERRORS)
@@ -14,33 +13,33 @@ CREATE
   TABLE etl_conf
   (
     source_db         VARCHAR2(30 BYTE)
-  , source_own        VARCHAR2(30 BYTE) NOT NULL 
-  , source_obj        VARCHAR2(30 BYTE) NOT NULL 
-  , target_own        VARCHAR2(30 BYTE) NOT NULL 
-  , target_obj        VARCHAR2(30 BYTE) NOT NULL 
-  , load_order        NUMBER(4,0)       NOT NULL 
-  , load_method       CHAR(3 BYTE)      NOT NULL 
-  , load_category     VARCHAR2(10 BYTE) NOT NULL 
-  , is_active         CHAR(1 BYTE)      NOT NULL 
+  , source_own        VARCHAR2(30 BYTE) NOT NULL
+  , source_obj        VARCHAR2(30 BYTE) NOT NULL
+  , target_own        VARCHAR2(30 BYTE) NOT NULL
+  , target_obj        VARCHAR2(30 BYTE) NOT NULL
+  , load_order        NUMBER(4,0)       NOT NULL
+  , load_method       CHAR(3 BYTE)      NOT NULL
+  , load_category     VARCHAR2(10 BYTE) NOT NULL
+  , is_active         CHAR(1 BYTE)      NOT NULL
   , archive_col_name  VARCHAR2(30 BYTE)
   , archive_col_oper  VARCHAR2(2 BYTE)
   , archive_col_value VARCHAR2(100 BYTE)
-  , CONSTRAINT etl_conf_is_act_ck 
-      CHECK ( is_active IN ('Y','N') ) 
-  , CONSTRAINT etl_conf_meth_ck 
-      CHECK ( load_method IN ('REF','APD') ) 
-  , CONSTRAINT etl_conf_categ_ck 
-      CHECK ( load_category IN ('MASTER','SNAPSHOT','TRACE') ) 
-  , CONSTRAINT etl_conf_arch_op_ck 
-      CHECK ( archive_col_oper IN ('<', '>', '<=', '>=', '<>') ) 
-  , CONSTRAINT etl_conf_arch_ck 
+  , CONSTRAINT etl_conf_is_act_ck
+      CHECK ( is_active IN ('Y','N') )
+  , CONSTRAINT etl_conf_meth_ck
+      CHECK ( load_method IN ('REF','APD') )
+  , CONSTRAINT etl_conf_categ_ck
+      CHECK ( load_category IN ('MASTER','SNAPSHOT','TRACE') )
+  , CONSTRAINT etl_conf_arch_op_ck
+      CHECK ( archive_col_oper IN ('<', '>', '<=', '>=', '<>') )
+  , CONSTRAINT etl_conf_arch_ck
       CHECK ( (load_method = 'APD' AND archive_col_name IS NOT NULL AND archive_col_oper IS NOT NULL AND archive_col_value IS NOT NULL)
-               OR 
+               OR
               (load_method = 'APD' AND archive_col_name IS NULL AND archive_col_oper IS NULL AND archive_col_value IS NULL)
-               OR 
-              (load_method = 'REF' AND archive_col_name IS NULL AND archive_col_oper IS NULL AND archive_col_value IS NULL) 
-            ) 
-  , CONSTRAINT etl_conf_pk 
+               OR
+              (load_method = 'REF' AND archive_col_name IS NULL AND archive_col_oper IS NULL AND archive_col_value IS NULL)
+            )
+  , CONSTRAINT etl_conf_pk
       PRIMARY KEY (target_own, target_obj)
   , CONSTRAINT etl_conf_meth_ord_un
       UNIQUE (load_method, load_order) DEFERRABLE INITIALLY DEFERRED

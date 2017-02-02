@@ -3,8 +3,7 @@
  *
  * Code for post: ETL: A Simple Package to Load Data from Views
  * Compatibility: Oracle Database 10g Release 1 and above
- * Base URL:      http://databaseline.wordpress.com
- * Post URL:      http://wp.me/p4zRKC-6F
+ * Base URL:      https://databaseline.bitbucket.io
  * Author:        Ian Hellström
  *
  * Notes:         DBMS_UTILITY.FORMAT_ERROR_BACKTRACE is available from 10.1 (in ERRORS)
@@ -48,7 +47,7 @@ FROM
     , stat.max_elapsed_time_sec
     , summ.last_successful_load
     , sql_utils.dts_to_sec(hist.elapsed_time) AS elapsed_time_sec
-    , ROW_NUMBER() OVER ( PARTITION BY hist.load_owner, hist.load_object 
+    , ROW_NUMBER() OVER ( PARTITION BY hist.load_owner, hist.load_object
                           ORDER BY hist.load_inst DESC ) AS rn
     FROM
       etl_exec_log hist
@@ -65,13 +64,13 @@ FROM
       hist.is_success = 'Y'
   )
   PIVOT
-  ( 
-    MAX(elapsed_time_sec) 
+  (
+    MAX(elapsed_time_sec)
     FOR rn IN (1 AS elapsed_time_sec#1,
                2 AS elapsed_time_sec#2,
                3 AS elapsed_time_sec#3,
                4 AS elapsed_time_sec#4,
-               5 AS elapsed_time_sec#5) 
+               5 AS elapsed_time_sec#5)
   )
 ORDER BY
   load_category
