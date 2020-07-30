@@ -4,7 +4,7 @@
  * Code for post: Checking Data Type Consistency in Oracle
  * Compatibility: Oracle Database 12c Release 1 and above
  *                Oracle Database 10g Release 1 and above (with minor modifications)
- * Base URL:      https://databaseline.bitbucket.io
+ * Base URL:      https://databaseline.tech
  * Author:        Ian Hellström
  *
  * Notes:         Extended data types (e.g. VARCHAR2) are available from 12.1

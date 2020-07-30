@@ -4,7 +4,7 @@
  * Code for post: Searching The Oracle Data Dictionary
  *                Checking Data Type Consistency in Oracle
  * Compatibility: Oracle Database 10g Release 1 and above
- * Base URL:      https://databaseline.bitbucket.io
+ * Base URL:      https://databaseline.tech
  * Author:        Ian Hellström
  *
  * Notes:         DBMS_UTILITY.FORMAT_ERROR_BACKTRACE is available from 10.1

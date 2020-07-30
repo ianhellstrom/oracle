@@ -3,7 +3,7 @@
  *
  * Code for post: N/A
  * Compatibility: Oracle Database 11g Release 1
- * Base URL:      https://databaseline.bitbucket.io
+ * Base URL:      https://databaseline.tech
  * Author:        Ian Hellström
  *
  * Notes:         PIVOT is available from 11.1

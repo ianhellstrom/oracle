@@ -3,7 +3,7 @@
  *
  * Code for post: How to Multiply Across a Hierarchy in Oracle
  * Compatibility: Oracle Database 12c Release 1
- * Base URL:      https://databaseline.bitbucket.io
+ * Base URL:      https://databaseline.tech
  * Author:        Ian Hellström
  *
  * Notes:         PRAGMA UDF and WITH FUNCTION are available from 12.1.
