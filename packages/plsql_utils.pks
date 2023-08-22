@@ -1,11 +1,9 @@
 /**
- * Databaseline code repository
- *
  * Code for post: Searching The Oracle Data Dictionary
  *                Checking Data Type Consistency in Oracle
  * Compatibility: Oracle Database 12c Release 1 and above
  *                Oracle Database 10g Release 1 and above (with minor modifications)
- * Base URL:      https://databaseline.tech
+ * Base URL:      https://ianhellstrom.org
  * Author:        Ian Hellström
  *
  * Notes:         Regular expressions are available from 10.1

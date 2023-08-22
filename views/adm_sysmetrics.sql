@@ -1,9 +1,7 @@
 /**
- * Databaseline code repository
- *
  * Code for post: N/A
  * Compatibility: Oracle Database 11g Release 1
- * Base URL:      https://databaseline.tech
+ * Base URL:      https://ianhellstrom.org
  * Author:        Ian Hellström
  *
  * Notes:         PIVOT is available from 11.1

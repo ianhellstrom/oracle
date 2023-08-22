@@ -1,10 +1,8 @@
 /**
- * Databaseline code repository
- *
  * Code for post: Searching The Oracle Data Dictionary
  *                Checking Data Type Consistency in Oracle
  * Compatibility: Oracle Database 8i Release 1
- * Base URL:      https://databaseline.tech
+ * Base URL:      https://ianhellstrom.org
  * Author:        Ian Hellström
  *
  * Notes:         Extended data types (e.g. VARCHAR2) are available from 12.1
